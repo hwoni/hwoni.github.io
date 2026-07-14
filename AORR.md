@@ -444,3 +444,48 @@ Recommended order for the first real implementation loop:
 7. Add snake game logic.
 8. Add keyboard and touch controls.
 9. Run compatibility and regression verifiers.
+
+## 15. Change Request Loop Plan
+
+This section tracks the next user-requested change batch after the first deployed version.
+
+### 15.1 Change Request Baseline
+
+- Change Request ID: `CRQ-2026-07-14-01`
+- Baseline commit: `8a59b2b`
+- Baseline URL: `https://hwoni.github.io/`
+- Planning status: `CHANGE_PLANNED`
+
+### 15.2 Loop States
+
+- `CHANGE_INTAKE`: Request captured, baseline confirmed, and user text preserved.
+- `CHANGE_PLANNED`: Request items decomposed and ordered.
+- `READY`: A specific change item is ready for implementation.
+- `ACTING`: The minimum related files are being edited.
+- `VERIFYING`: The targeted verifier set is running.
+- `RETRYING`: A single failure reason is being fixed.
+- `PASSED`: The loop target passed and regressions are checked.
+- `BLOCKED`: GitHub permission, environment, or external asset issue blocks progress.
+- `HITL_REQUIRED`: Asset source, ambiguity, or approval is needed.
+- `DEPLOY_APPROVAL_REQUIRED`: Local change set is ready for redeploy approval.
+- `DEPLOYED`: Updated site is live.
+
+### 15.3 Loop Table
+
+| Loop ID | Linked Change Item | Target | Act | Observe | Reason | Verifier | Completion Criteria | Retry Policy | Stop | HITL | Expected Files | Predecessor | Next |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| CRQ-L1 | CR-002 | Require Start button before gameplay begins | Gate game start behind the Start button | Start flow, state transitions | `GAME_STATE` / `GAME_CONTROL` | Game interaction verifier | Game does not begin until Start is pressed | One cause, max 3 retries | `PASSED` or `BLOCKED` | If start semantics conflict | `script.js`, `index.html` | Baseline | CRQ-L2 |
+| CRQ-L2 | CR-001 | Slow snake movement to 0.5x | Reduce tick speed | Movement pace, timer interval | `GAME_LOGIC` | Runtime simulation and manual play | Snake speed is half of current pace | Same as above | `PASSED` or `RETRYING` | If pacing feels ambiguous | `script.js` | CRQ-L1 | CRQ-L3 |
+| CRQ-L3 | CR-007 | Move Start/Pause/Stop above direction pad | Reposition control cluster | Layout, mobile touch reach | `UI_UX` / `GAME_CONTROL` | Responsive viewport checks | Buttons appear directly above the D-pad | Same as above | `PASSED` or `RETRYING` | If placement collides with layout | `index.html`, `styles.css` | CRQ-L1 | CRQ-L4 |
+| CRQ-L4 | CR-006 | Make board cells smaller / denser | Tighten board resolution | Canvas board density | `GAME_RENDERING` | Viewport and render check | Board squares are visibly smaller / denser | Same as above | `PASSED` or `HITL_REQUIRED` | If interpretation is unclear | `script.js`, `styles.css` | CRQ-L1 | CRQ-L5 |
+| CRQ-L5 | CR-005 | Show laugh/taunt mark on game over | Add game-over expression | Game-over overlay | `GAME_STATE` / `GAME_EFFECT` | Runtime + visual check | Game over clearly shows the requested expression | Same as above | `PASSED` or `HITL_REQUIRED` | If expression choice needs approval | `script.js`, `index.html`, `styles.css` | CRQ-L1 | CRQ-L6 |
+| CRQ-L6 | CR-003 | Replace item visual with apple icon | Update item art | Food rendering | `GAME_ENTITY` | Runtime + visual check | Item appears as an apple icon | Same as above | `PASSED` or `HITL_REQUIRED` | If asset/license is unclear | `script.js`, `styles.css`, `index.html` | CRQ-L1 | CRQ-L7 |
+| CRQ-L7 | CR-004 | Replace snake face with Croong-like face | Update snake head art | Head rendering | `GAME_ENTITY` / `CONTENT` | Runtime + visual check | Snake head face matches the requested vibe | Same as above | `PASSED` or `HITL_REQUIRED` | Exact likeness/licensing must be confirmed | `script.js`, `styles.css`, `index.html` | CRQ-L1 | CRQ-L8 |
+| CRQ-L8 | CR-008 | Rewrite Selected work into one-line entries | Condense work card copy | Card text wrapping | `CONTENT` / `UI_UX` | HTML text and viewport checks | Each card is concise and line-stable | Same as above | `PASSED` | If wording needs confirmation | `index.html`, `styles.css` | CRQ-L1 | Regression |
+
+### 15.4 Change Request Stop Conditions
+
+- Stop when all Change Items pass and regression tests pass.
+- Stop when a single item hits the retry limit.
+- Stop when an item needs asset source confirmation.
+- Stop when the user changes the requested scope.

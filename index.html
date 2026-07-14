@@ -14,7 +14,7 @@
   <header class="site-header">
     <div class="brand">
       <a class="brand__name" href="#home">hwoni</a>
-      <p class="brand__role">Developer · 모바일 게임 개발자</p>
+      <p class="brand__role">Developer · Mobile Game Developer</p>
     </div>
 
     <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
@@ -35,10 +35,10 @@
     <section class="hero section" id="home">
       <div class="hero__copy">
         <p class="eyebrow">Static site for GitHub Pages</p>
-        <h1>Professional, responsive, and ready for a game.</h1>
+        <h1>Playful portfolio, responsive by design.</h1>
         <p class="hero__lead">
-          This starting point keeps the structure simple: semantic sections, a mobile-friendly
-          navigation bar, and a dedicated Games tab for the snake game.
+          A clean static website with semantic sections, mobile-friendly navigation, and a Games tab
+          that opens into a playable snake experience.
         </p>
         <div class="hero__actions">
           <a class="button button--primary" href="#projects">View Projects</a>
@@ -76,7 +76,7 @@
         <ul class="panel-list">
           <li>hwoni</li>
           <li>Developer</li>
-          <li>모바일 게임 개발자</li>
+          <li>Mobile Game Developer</li>
         </ul>
       </aside>
     </section>
@@ -87,8 +87,8 @@
         <h2>Who I am</h2>
       </div>
       <p>
-        떠오른 재미있는 상상을, 사람들이 한 판 더 하고 싶은 게임으로 만듭니다. 모바일 환경에서
-        손맛 있는 플레이 흐름과 기억에 남는 경험을 만드는 개발자입니다.
+        재미있는 상상을 플레이할 수 있는 게임으로 만드는 개발자입니다. 모바일 환경에서
+        편하게 즐길 수 있는 흐름과 기억에 남는 연출을 함께 고민합니다.
       </p>
     </section>
 
@@ -99,12 +99,12 @@
       </div>
       <div class="grid grid--two">
         <article class="card">
-          <h3>캐주얼 모바일 퍼즐 게임 개발</h3>
-          <p>Unity와 C#으로 터치 입력, 스테이지, 콤보와 점수 시스템을 구현했습니다.</p>
+          <h3>Casual mobile puzzle development</h3>
+          <p>Unity and C# 기반으로 터치 입력, 스테이지 구성, 콤보와 점수 시스템을 설계한 경험이 있습니다.</p>
         </article>
         <article class="card">
-          <h3>모바일 게임 성능 최적화</h3>
-          <p>프레임 드롭과 메모리 사용량을 분석하고, 풀링과 리소스 최적화로 안정성을 높였습니다.</p>
+          <h3>Mobile game performance tuning</h3>
+          <p>프레임 드롭과 메모리 사용량을 분석하고, 풀링과 리소스 최적화로 안정적인 플레이를 맞췄습니다.</p>
         </article>
       </div>
     </section>
@@ -121,11 +121,11 @@
         </article>
         <article class="card">
           <h3>Tiny Dungeon Runner</h3>
-          <p>랜덤 던전을 탐험하며 성장하는 모바일 액션 게임. Unity, C#, Object Pooling, State Machine, Procedural Generation.</p>
+          <p>랜덤으로 생성되는 던전을 탐험하고 캐릭터를 성장시키는 모바일 액션 게임. Unity, C#, Object Pooling, State Machine, Procedural Generation.</p>
         </article>
         <article class="card">
           <h3>Cozy Farm Manager</h3>
-          <p>작물을 키우고 농장을 확장하는 모바일 시뮬레이션 게임. Unity, C#, ScriptableObject, JSON, Save System, Event System.</p>
+          <p>작물을 키우고 아이템을 제작하며 농장을 확장하는 모바일 시뮬레이션 게임. Unity, C#, ScriptableObject, JSON, Save System, Event System.</p>
         </article>
       </div>
     </section>
@@ -155,25 +155,27 @@
           </div>
         </div>
 
-        <div class="game-ui__controls">
-          <button class="button button--primary" type="button" data-action="start">Start</button>
-          <button class="button button--ghost" type="button" data-action="pause">Pause</button>
-          <button class="button button--ghost" type="button" data-action="restart">Restart</button>
-        </div>
-
         <div class="game-ui__body">
           <canvas id="game-canvas" class="game-canvas" width="480" height="480" aria-label="Snake game board" role="img"></canvas>
 
-          <div class="touch-controls" aria-label="Mobile direction controls">
-            <button type="button" class="touch-controls__up" data-direction="up" aria-label="Move up">▲</button>
-            <button type="button" class="touch-controls__left" data-direction="left" aria-label="Move left">◀</button>
-            <button type="button" class="touch-controls__down" data-direction="down" aria-label="Move down">▼</button>
-            <button type="button" class="touch-controls__right" data-direction="right" aria-label="Move right">▶</button>
+          <div class="game-ui__sidebar">
+            <div class="game-ui__controls">
+              <button class="button button--primary" type="button" data-action="start">Start</button>
+              <button class="button button--ghost" type="button" data-action="pause">Pause</button>
+              <button class="button button--ghost" type="button" data-action="stop">Stop</button>
+            </div>
+
+            <div class="touch-controls" aria-label="Mobile direction controls">
+              <button type="button" class="touch-controls__up" data-direction="up" aria-label="Move up">↑</button>
+              <button type="button" class="touch-controls__left" data-direction="left" aria-label="Move left">←</button>
+              <button type="button" class="touch-controls__down" data-direction="down" aria-label="Move down">↓</button>
+              <button type="button" class="touch-controls__right" data-direction="right" aria-label="Move right">→</button>
+            </div>
           </div>
         </div>
 
         <p class="game-ui__hint">
-          Space 또는 P 키로 일시정지 / 재개할 수 있습니다.
+          Space or P pauses and resumes. Press Start to begin a game.
         </p>
       </div>
     </section>

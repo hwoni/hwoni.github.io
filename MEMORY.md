@@ -158,3 +158,86 @@
 | 종료 상태 | BLOCKED |
 | 다음 작업 | GitHub 네트워크 또는 접근 문제 해결 후 push 재시도 |
 | 사람 확인 필요 항목 | 개인 소개, 경력, 프로젝트, 연락처, GitHub 연결 문제 해결 |
+
+## Change Request Memory
+
+| Field | Value |
+|---|---|
+| Last normal deployed commit | `8a59b2b` |
+| Last normal deployed URL | `https://hwoni.github.io/` |
+| New Change Request ID | `CRQ-2026-07-14-01` |
+| Current status | `CHANGE_PLANNED` |
+| Reference files | `AORR.md`, `MEMORY.md`, `CHANGE_REQUEST.md` |
+
+### Change Items
+- `CR-001`: Snake speed to 0.5x.
+- `CR-002`: Require Start button to begin.
+- `CR-003`: Replace item with apple icon.
+- `CR-004`: Replace snake face with Croong-like face.
+- `CR-005`: Show laugh/taunt mark on game over.
+- `CR-006`: Make board squares smaller / board denser.
+- `CR-007`: Move Start, Pause, Stop above the direction pad.
+- `CR-008`: Rewrite Selected work as one-line entries.
+
+### Request Summary
+- The user wants a post-deployment adjustment pass focused on the game feel, game UI, and a small content formatting update in Selected work.
+
+### New Completion Criteria
+- The snake only starts after Start is pressed.
+- Movement speed is reduced to half of the current pace.
+- Food is shown as an apple icon.
+- Snake head rendering is changed to the requested mascot-like face.
+- Game over shows the requested taunting/laughing mark.
+- The board uses smaller squares / denser cells.
+- Start, Pause, Stop sit above the directional pad.
+- Selected work cards are condensed into one-line entries.
+
+### Loop Execution Order
+1. Baseline validation
+2. `CRQ-L1` Start gating
+3. `CRQ-L2` speed reduction
+4. `CRQ-L3` control placement
+5. `CRQ-L4` board density
+6. `CRQ-L5` game-over mark
+7. `CRQ-L6` apple icon
+8. `CRQ-L7` snake face
+9. `CRQ-L8` Selected work rewrite
+10. Regression tests
+11. GitHub Pages compatibility verification
+12. Redeploy approval
+
+### Next Step 9 First Loop
+- `CRQ-L1`
+
+### Rollback Criteria
+- Any change breaks the existing site layout, navigation, or mobile behavior.
+- Any game update causes runtime errors or timer duplication.
+- Any requested art asset cannot be sourced safely.
+- The deployment source or Pages behavior diverges from the local result.
+
+### HITL Items
+- Croong-like face asset source / likeness confirmation.
+- Apple icon asset source if an external asset is needed.
+- Meaning of "board 해상도" if the smaller-square interpretation is not sufficient.
+## Change Request Execution Snapshot
+
+- Change Request ID: `CRQ-2026-07-14-01`
+- Baseline commit before this implementation batch: `8a59b2b`
+- Last normal deployed commit: `8a59b2b`
+- Last normal deployed URL: `https://hwoni.github.io/`
+- Current branch: `main`
+- Current worktree state before edits: `M AORR.md`, `M MEMORY.md`, `?? CHANGE_REQUEST.md`
+- First loop target: `CR-002` start gating
+- Planned execution order: `CR-002`, `CR-001`, `CR-007`, `CR-006`, `CR-005`, `CR-003`, `CR-004`, `CR-008`
+- Rollback criteria: any regression in navigation, responsive layout, keyboard control, touch control, or GitHub Pages compatibility
+- Human-in-the-loop items: Croong-like face likeness confirmation, apple icon source if external assets are needed, any ambiguous board-density interpretation
+
+## Current State Snapshot
+
+- State: `VERIFYING`
+- Completed loops: none yet
+- Next loop: `CRQ-L1`
+- Retry count: `0`
+- Current error fingerprint: `TEST|claude-cli|timeout|independent-verifier-timeout`
+- Blocker: none yet
+- Last known good state: deployed site at commit `8a59b2b`
